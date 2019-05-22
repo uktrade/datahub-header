@@ -1,0 +1,14 @@
+{% extends './layout.njk' %}
+
+{% from 'src/component/header.njk' import datahubHeader %}
+
+{% block body %}
+	{{ datahubHeader( user.permitted_applications, {
+		active: 'datahub-contacts',
+		fluid: false,
+		user: {
+			name: user.name
+		},
+		subNavigation: createSubnav( { fixed: true } )
+	} ) }}
+{% endblock %}

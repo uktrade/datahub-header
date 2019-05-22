@@ -37,11 +37,11 @@ $tablet: 40.0625em;
  .datahub-header {
 	font-family: Arial,"Helvetica Neue",Helvetica,sans-serif;
 	line-height: 1.5;
+	background-color: black;
  }
 
 .datahub-header__logo-container {
 
-	background-color: black;
 	color: white;
 	overflow: hidden;
 	font-weight: 700;
@@ -119,12 +119,21 @@ $tablet: 40.0625em;
 	@include govuk-visually-hidden;
 }
 
-.datahub-header__navigation {
+.datahub-header__navigation-wrapper {
 	background-color: $govuk-grey-3;
+	font-weight: 700;
+}
+
+.datahub-header__navigation-wrapper--sub {
+	background-color: $govuk-grey-4;
+	font-weight: normal;
+	border-bottom: 1px solid $govuk-grey-3;
+}
+
+.datahub-header__navigation {
 	margin: 0;
 	padding: 0;
 	list-style: none;
-	font-weight: 700;
 	padding: 0 30px;
 }
 
@@ -168,10 +177,14 @@ $tablet: 40.0625em;
 	}
 }
 
-.datahub-header__navigation--sub {
-	font-weight: normal;
-	background-color: $govuk-grey-4;
-	border-bottom: 1px solid $govuk-grey-3;
+.datahub-header--max-width {
+
+	.datahub-header__logo-container,
+	.datahub-header__navigation {
+		max-width: 960px;
+		margin-left: auto;
+		margin-right: auto;
+	}
 }
 
 .datahub-header__menu-button {

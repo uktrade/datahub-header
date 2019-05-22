@@ -60,6 +60,10 @@ const server = http.createServer( ( req, res ) => {
 						href: '/no-user/',
 						active: !!opts.user
 					},{
+						text: 'Fixed width',
+						href: '/fixed-width/',
+						active: !!opts.fixed
+					},{
 						text: 'No subnav',
 						href: '/no-subnav/',
 						active: false
@@ -104,6 +108,12 @@ const server = http.createServer( ( req, res ) => {
 			renderTemplate( 'no-subnav.njk', [ CRM, MI ] );
 
 		break;
+		case '/fixed-width/':
+
+			renderTemplate( 'fixed-width.njk', [ CRM, MI ] );
+
+		break;
+
 		case '/src/app/header.css':
 
 			returnFile( 'text/css', './header.css' );

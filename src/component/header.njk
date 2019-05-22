@@ -75,7 +75,7 @@
 	}
 ] -%}
 
-<header class="datahub-header js-datahub-header" role="banner" data-module="header"
+<header class="datahub-header js-datahub-header{% if params.fluid == false %} datahub-header--max-width{% endif %}" role="banner" data-module="header"
 	{%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
 	<div class="datahub-header__logo-container">
 		<div class="datahub-header__logo">
@@ -104,7 +104,7 @@
 	</div>
 	<button role="button" class="datahub-header__menu-button js-datahub-header-toggle" aria-controls="navigation sub-navigation logo-navigation" aria-label="Show or hide navigation">Menu</button>
 	<div class="datahub-header__navigation-container">
-		<nav>
+		<nav class="datahub-header__navigation-wrapper">
 			<ul id="navigation" class="datahub-header__navigation {{ params.navigationClasses if params.navigationClasses }}" aria-label="Top Level Navigation">
 			{%- for item in apps %}
 
@@ -126,8 +126,8 @@
 			</ul>
 		</nav>
 		{%- if params.subNavigation %}
-			<nav>
-				<ul id="sub-navigation" class="datahub-header__navigation datahub-header__navigation--sub" aria-label="Second Level Navigation">
+			<nav class="datahub-header__navigation-wrapper datahub-header__navigation-wrapper--sub">
+				<ul id="sub-navigation" class="datahub-header__navigation" aria-label="Second Level Navigation">
 				{%- for item in params.subNavigation %}
 					<li class="datahub-header__navigation__item">
 						<a class="datahub-header__navigation__item__link{{ ' datahub-header__navigation__item__link--active' if item.active }}" href="{{ item.href }}">{{ item.text }}</a>
