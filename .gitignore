@@ -64,3 +64,4 @@ typings/
 .envrc
 header.css
 *.map
+component/
