@@ -29,10 +29,12 @@
 
 		var i = 0;
 		var l = toggleIds.length;
+		var toggleElem;
 
 		for( ; i < l; i++ ){
 
-			this.toggleElems.push( doc.getElementById( toggleIds[ i ] ) );
+			toggleElem = doc.getElementById( toggleIds[ i ] );
+			if( toggleElem ) { this.toggleElems.push( toggleElem ); }
 		}
 
 		// Handle $toggleButton click events
