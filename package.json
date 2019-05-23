@@ -3,17 +3,19 @@
   "version": "1.0.0",
   "description": "The Data Hub header component",
   "main": "index.js",
-  "files": [ "component/" ],
+  "files": [
+    "component/"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/app/server.js",
-	 "watch": "run-p watch:*",
-	 "watch:app": "nodemon src/app/server.js",
+    "watch": "run-p watch:*",
+    "watch:app": "nodemon src/app/server.js",
     "watch:sass": "npm run sass:dev && node-sass src/component/header.scss src/app/header.css --source-map src/app/header.css.map --source-map-contents -w -r",
     "sass:dev": "node-sass src/component/header.scss src/app/header.css --source-map src/app/header.css.map --source-map-contents",
-	 "sass:build": "node-sass src/component/header.scss component/header.css -x --output-style compressed",
-	 "prepack": "npm run build",
-	 "build": "if [ -d component ]; then rm -r component; fi; mkdir component; npm run sass:build && cp src/component/header.{js,njk} component/"
+    "sass:build": "node-sass src/component/header.scss component/header.css -x --output-style compressed",
+    "prepack": "npm run build",
+    "build": "if [ -d component ]; then rm -r component; fi; mkdir component; npm run sass:build && cp src/component/header.{js,njk} component/"
   },
   "repository": {
     "type": "git",
