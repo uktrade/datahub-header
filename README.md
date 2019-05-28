@@ -45,3 +45,12 @@ After installation you need to add the CSS and JS to your app. If using SASS you
 Similarly, the path to the JS file for inclusion in your bundler should be `node_modules/@uktrade/datahub-header/component/header.js`
 
 
+## Testing
+
+To test the various headers in a browser there is a local Node.js server with multiple pages, first install the dependencies: ```npm install``` then run `npm start` to start it. You can control the port number by setting a `PORT` env variable.
+
+### Watching for changes
+
+If you want to add more test scenarios then it will be easier to have the files watched for changes and restart automatically. Simply run `npm run watch` to start the server in watch mode.
+
+The server is a basic `http.createServer` without any framework, so simply add a new template and update the `switch` statement with the new url path to match on. You will probably want to update the `createSubnav` function that is passed to the templates to add the new item, so you have a link to it.
