@@ -8,7 +8,26 @@
 			name: user.name
 		},
 		active: 'datahub-companies',
+		availableApps: availableApps,
 		subNavigation: createSubnav( { crm: true } )
 	} ) }}
+
+	<h2>Single top nav items</h2>
+	<ul>
+		<li><a href="/crm/?apps=datahub-companies">Companies</a></li>
+		<li><a href="/crm/?apps=datahub-contacts">Contacts</a></li>
+		<li><a href="/crm/?apps=datahub-events">Events</a></li>
+		<li><a href="/crm/?apps=datahub-interactions">Interactions</a></li>
+		<li><a href="/crm/?apps=datahub-investments">Investments</a></li>
+		<li><a href="/crm/?apps=datahub-orders">Orders</a></li>
+	</ul>
+
+	<h2>Multiple top nav items</h2>
+	<ul>
+		<li><a href="/crm/?apps=datahub-companies,datahub-contacts">Companies and contacts</a></li>
+		<li><a href="/crm/?apps=datahub-companies,datahub-contacts,datahub-events">Companies, contacts and events</a></li>
+		<li><a href="/crm/?apps=datahub-events,datahub-interactions">Events and interactions</a></li>
+		<li><a href="/crm/?apps=datahub-investments,datahub-orders">Investments and orders</a></li>
+	</ul>
 {% endblock %}
 
