@@ -117,6 +117,16 @@ const server = http.createServer( ( req, res ) => {
 			renderTemplate( 'fixed-width.njk', [ CRM, MI ] );
 
 		break;
+		case '/support':
+
+			renderTemplate( 'support.njk', [ CRM ] );
+
+		break;
+		case '/profile':
+
+			renderTemplate( 'profile.njk', [ CRM ] );
+
+		break;
 		case '/src/app/header.css':
 
 			returnFile( 'text/css', './header.css' );

@@ -5,6 +5,9 @@
 {% block body %}
 	{{ datahubHeader( user.permitted_applications, {
 		active: 'datahub-contacts',
+		domains: {
+			datahub: '/'
+		},
 		subNavigation: createSubnav( { user: true } )
 	} ) }}
 {% endblock %}

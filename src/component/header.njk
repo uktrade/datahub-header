@@ -1,6 +1,6 @@
 {% macro datahubHeader( permittedApps, params ) %}
 
-{%- set availableApps = params.availableApps %}
+{%- set crmApps = params.crmApps %}
 {%- set datahubDomain = ( params.domains.datahub or 'https://www.datahub.trade.gov.uk/' ) %}
 {%- set miDomain = ( params.domains.mi or 'https://mi.exportwins.service.trade.gov.uk/' ) %}
 {%- set findExportersDomain = ( params.domains.findExporters or 'https://find-exporters.datahub.trade.gov.uk/' ) %}
@@ -24,37 +24,37 @@
 	{
 		permittedKey: datahubCrmKey,
 		activeKey: companiesKey,
-		canShow: ( companiesKey in availableApps ) if availableApps else true,
+		canShow: ( companiesKey in crmApps ) if crmApps else true,
 		name: 'Companies',
 		href: ( datahubDomain + 'companies' )
 	}, {
 		permittedKey: datahubCrmKey,
 		activeKey: contactsKey,
-		canShow: ( contactsKey in availableApps ) if availableApps else true,
+		canShow: ( contactsKey in crmApps ) if crmApps else true,
 		name: 'Contacts',
 		href: ( datahubDomain + 'contacts' )
 	}, {
 		permittedKey: datahubCrmKey,
 		activeKey: eventsKey,
-		canShow: ( eventsKey in availableApps ) if availableApps else true,
+		canShow: ( eventsKey in crmApps ) if crmApps else true,
 		name: 'Events',
 		href: ( datahubDomain + 'events' )
 	}, {
 		permittedKey: datahubCrmKey,
 		activeKey: interactionsKey,
-		canShow: ( interactionsKey in availableApps ) if availableApps else true,
+		canShow: ( interactionsKey in crmApps ) if crmApps else true,
 		name: 'Interactions',
 		href: ( datahubDomain + 'interactions' )
 	}, {
 		permittedKey: datahubCrmKey,
 		activeKey: investmentsKey,
-		canShow: ( investmentsKey in availableApps ) if availableApps else true,
+		canShow: ( investmentsKey in crmApps ) if crmApps else true,
 		name: 'Investments',
 		href: ( datahubDomain + 'investments' )
 	}, {
 		permittedKey: datahubCrmKey,
 		activeKey: ordersKey,
-		canShow: ( ordersKey in availableApps ) if availableApps else true,
+		canShow: ( ordersKey in crmApps ) if crmApps else true,
 		name: 'Orders',
 		href: ( datahubDomain + 'omis' )
 	}, {
@@ -75,10 +75,12 @@
 {%- set headerLinks = [
 	{
 		text: 'Support',
-		href: ( datahubDomain + 'support' )
+		href: ( datahubDomain + 'support' ),
+		active: ( 'datahub-support' === params.active )
 	}, {
 		text: params.user.name,
-		href: ( ( datahubDomain + 'profile' ) if( hasCrmPermission ) )
+		href: ( ( datahubDomain + 'profile' ) if( hasCrmPermission ) ),
+		active: ( 'datahub-profile' === params.active )
 	}, {
 		text: 'Sign out',
 		href: ( params.signout if params.signout else ( datahubDomain + 'sign-out' ) )
@@ -103,9 +105,9 @@
 				{%- if link.text %}
 				<li class="datahub-header__links__item">
 					{%- if link.href %}
-					<a class="datahub-header__links__item__text" href="{{ link.href }}">{{ link.text }}</a>
+					<a class="datahub-header__links__item__text{{ ' datahub-header__links__item__text--active' if link.active }}" href="{{ link.href }}">{{ link.text }}</a>
 					{%- else %}
-					<span class="datahub-header__links__item__text">{{ link.text }}</span>
+					<span class="datahub-header__links__item__text{{ ' datahub-header__links__item__text--active' if link.active }}">{{ link.text }}</span>
 					{%- endif %}
 				</li>
 				{%- endif %}
