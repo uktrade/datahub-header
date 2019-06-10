@@ -200,12 +200,6 @@ $tablet: 40.0625em;
 		margin-left: auto;
 		margin-right: auto;
 	}
-
-	@media ( min-width: $tablet ){
-		.datahub-header__links__item:last-of-type {
-			padding-right: 0;
-		}
-	}
 }
 
 .datahub-header__menu-button {
@@ -302,9 +296,14 @@ $tablet: 40.0625em;
 	}
 
 	.datahub-header__links__item {
+
 		display: inline-block;
 		padding: 5px 10px;
 		border-bottom: 0;
+
+		&:last-of-type {
+			padding-right: 0;
+		}
 	}
 
 	.datahub-header__logo-container,
