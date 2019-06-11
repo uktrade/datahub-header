@@ -46,7 +46,8 @@ $tablet: 40.0625em;
 	color: white;
 	overflow: hidden;
 	font-weight: 700;
-	padding: 2px 30px;
+	padding: 2px 15px;
+	box-sizing: initial;
 	-moz-osx-font-smoothing: grayscale;
 
 	a,
@@ -107,9 +108,20 @@ $tablet: 40.0625em;
 }
 
 .datahub-header__links__item__text {
+
 	display: inline-block;
 	padding: 5px 0;
 	width: 100%;
+
+	&.datahub-header__links__item__text--active {
+
+		color: $govuk-blue;
+
+		&:link,
+		&:visited {
+			color: $govuk-blue;
+		}
+	}
 }
 
 .datahub-header__links__item a.datahub-header__links__item__text:hover {
@@ -135,7 +147,8 @@ $tablet: 40.0625em;
 	margin: 0;
 	padding: 0;
 	list-style: none;
-	padding: 0 30px;
+	padding: 0 15px;
+	box-sizing: initial;
 }
 
 .datahub-header__navigation__item {
@@ -186,12 +199,6 @@ $tablet: 40.0625em;
 		max-width: 960px;
 		margin-left: auto;
 		margin-right: auto;
-	}
-
-	@media ( min-width: $tablet ){
-		.datahub-header__links__item:last-of-type {
-			padding-right: 0;
-		}
 	}
 }
 
@@ -289,9 +296,20 @@ $tablet: 40.0625em;
 	}
 
 	.datahub-header__links__item {
+
 		display: inline-block;
 		padding: 5px 10px;
 		border-bottom: 0;
+
+		&:last-of-type {
+			padding-right: 0;
+		}
+	}
+
+	.datahub-header__logo-container,
+	.datahub-header__navigation {
+		padding-left: 30px;
+		padding-right: 30px;
 	}
 
 	.datahub-header__navigation__item {

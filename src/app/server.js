@@ -1,6 +1,7 @@
 const http = require( 'http' );
 const fs = require( 'fs' );
 const path = require( 'path' );
+const url = require( 'url' );
 const nunjucks = require( 'nunjucks' );
 
 const PORT = ( process.env.PORT || 3000 );
@@ -15,6 +16,8 @@ nunjucks.configure( {
 } );
 
 const server = http.createServer( ( req, res ) => {
+
+	const { pathname, query } = url.parse( req.url, true );
 
 	function returnFile( contentType, file ){
 
@@ -34,49 +37,51 @@ const server = http.createServer( ( req, res ) => {
 		} );
 	}
 
-	function renderTemplate( template, appKeys = [] ){
+	function renderTemplate( template, appKeys = [], availableApps ){
 
 		res.writeHead( 200, { 'Content-Type': 'text/html' } );
-			res.end( nunjucks.render( `src/app/templates/${ template }`, {
-				createSubnav: ( opts = {} ) => [
-					{
-						text: 'All apps',
-						href: '/',
-						active: !!opts.all
-					},{
-						text: 'Only CRM',
-						href: '/crm/',
-						active: !!opts.crm
-					},{
-						text: 'Only MI',
-						href: '/mi/',
-						active: !!opts.mi
-					},{
-						text: 'Only Exporters',
-						href: '/find-exporters/',
-						active: !!opts.exporters
-					},{
-						text: 'No user',
-						href: '/no-user/',
-						active: !!opts.user
-					},{
-						text: 'Fixed width',
-						href: '/fixed-width/',
-						active: !!opts.fixed
-					},{
-						text: 'No subnav',
-						href: '/no-subnav/',
-						active: false
-					}
-				],
-				user: {
-					name: 'Test User',
-					permitted_applications: appKeys.map( ( key ) => ({ key }) ),
+		res.end( nunjucks.render( `src/app/templates/${ template }`, {
+			createSubnav: ( opts = {} ) => [
+				{
+					text: 'All apps',
+					href: '/',
+					active: !!opts.all
+				},{
+					text: 'Only CRM',
+					href: '/crm/',
+					active: !!opts.crm
+				},{
+					text: 'Only MI',
+					href: '/mi/',
+					active: !!opts.mi
+				},{
+					text: 'Only Exporters',
+					href: '/find-exporters/',
+					active: !!opts.exporters
+				},{
+					text: 'No user',
+					href: '/no-user/',
+					active: !!opts.user
+				},{
+					text: 'Fixed width',
+					href: '/fixed-width/',
+					active: !!opts.fixed
+				},{
+					text: 'No subnav',
+					href: '/no-subnav/',
+					active: false
 				}
-			} ) );
+			],
+			user: {
+				name: 'Test User',
+				permitted_applications: appKeys.map( ( key ) => ({ key }) ),
+			},
+			availableApps,
+			active: query.active || 'datahub-companies'
+		} ) );
 	}
 
-	switch( req.url ){
+	switch( pathname ){
 
 		case '/':
 
@@ -85,7 +90,7 @@ const server = http.createServer( ( req, res ) => {
 		break;
 		case '/crm/':
 
-			renderTemplate( 'crm.njk', [ CRM ] );
+			renderTemplate( 'crm.njk', [ CRM ], ( query.apps && query.apps.split( ',' ) ) );
 
 		break;
 		case '/mi/':
@@ -113,7 +118,16 @@ const server = http.createServer( ( req, res ) => {
 			renderTemplate( 'fixed-width.njk', [ CRM, MI ] );
 
 		break;
+		case '/support':
 
+			renderTemplate( 'support.njk', [ CRM ] );
+
+		break;
+		case '/profile':
+
+			renderTemplate( 'profile.njk', [ CRM ] );
+
+		break;
 		case '/src/app/header.css':
 
 			returnFile( 'text/css', './header.css' );

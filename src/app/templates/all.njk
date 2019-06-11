@@ -7,8 +7,23 @@
 		user: {
 			name: user.name
 		},
-		active: 'market-access',
+		domains: {
+			datahub: '/'
+		},
+		active: active,
 		subNavigation: createSubnav( { all: true } )
 	} ) }}
+
+	<h2>Active top nav items</h2>
+	<ul>
+		<li><a href="/?active=datahub-companies">Companies</a></li>
+		<li><a href="/?active=datahub-contacts">Contacts</a></li>
+		<li><a href="/?active=datahub-events">Events</a></li>
+		<li><a href="/?active=datahub-interactions">Interactions</a></li>
+		<li><a href="/?active=datahub-investments">Investments</a></li>
+		<li><a href="/?active=datahub-orders">Orders</a></li>
+		<li><a href="/?active=datahub-mi">MI</a></li>
+		<li><a href="/?active=find-exporters">Find Exporters</a></li>
+	</ul>
 {% endblock %}
 

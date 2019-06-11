@@ -4,6 +4,9 @@
 
 {% block body %}
 	{{ datahubHeader( user.permitted_applications, {
-		active: 'datahub-events'
+		active: 'datahub-events',
+		domains: {
+			datahub: '/'
+		}
 	} ) }}
 {% endblock %}
