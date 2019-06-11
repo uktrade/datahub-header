@@ -77,6 +77,7 @@ const server = http.createServer( ( req, res ) => {
 				permitted_applications: appKeys.map( ( key ) => ({ key }) ),
 			},
 			availableApps,
+			active: query.active || 'datahub-companies'
 		} ) );
 	}
 
