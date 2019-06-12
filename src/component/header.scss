@@ -47,7 +47,7 @@ $tablet: 40.0625em;
 	overflow: hidden;
 	font-weight: 700;
 	padding: 2px 15px;
-	box-sizing: initial;
+	box-sizing: content-box;
 	-moz-osx-font-smoothing: grayscale;
 
 	a,
@@ -148,7 +148,7 @@ $tablet: 40.0625em;
 	padding: 0;
 	list-style: none;
 	padding: 0 15px;
-	box-sizing: initial;
+	box-sizing: content-box;
 }
 
 .datahub-header__navigation__item {
