@@ -83,7 +83,7 @@
 		active: ( 'datahub-profile' === params.active )
 	}, {
 		text: 'Sign out',
-		href: ( params.signout if params.signout else ( datahubDomain + 'sign-out' ) )
+		href: ( params.signout if params.signout else ( datahubDomain + 'oauth/sign-out' ) )
 	}
 ] -%}
 
