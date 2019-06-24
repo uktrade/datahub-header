@@ -59,6 +59,10 @@ const server = http.createServer( ( req, res ) => {
 					href: '/find-exporters/',
 					active: !!opts.exporters
 				},{
+					text: 'Only MA',
+					href: '/market-access/',
+					active: !!opts.ma
+				},{
 					text: 'No user',
 					href: '/no-user/',
 					active: !!opts.user
@@ -84,60 +88,53 @@ const server = http.createServer( ( req, res ) => {
 	switch( pathname ){
 
 		case '/':
-
 			renderTemplate( 'all.njk', [ CRM, MI, MARKET_ACCESS, EXPORTERS ] );
+			break;
 
-		break;
 		case '/crm/':
-
 			renderTemplate( 'crm.njk', [ CRM ], ( query.apps && query.apps.split( ',' ) ) );
+			break;
 
-		break;
 		case '/mi/':
-
 			renderTemplate( 'mi.njk', [ MI ] );
+			break;
 
-		break;
 		case '/find-exporters/':
-
 			renderTemplate( 'find-exporters.njk', [ EXPORTERS ] );
+			break;
 
-		break;
+		case '/market-access/':
+			renderTemplate( 'market-access.njk', [ MARKET_ACCESS ] );
+			break;
+
 		case '/no-user/':
-
 			renderTemplate( 'no-user.njk', [ CRM, EXPORTERS ] );
+			break;
 
-		break;
 		case '/no-subnav/':
-
 			renderTemplate( 'no-subnav.njk', [ CRM, MI ] );
+			break;
 
-		break;
 		case '/fixed-width/':
-
 			renderTemplate( 'fixed-width.njk', [ CRM, MI ] );
+			break;
 
-		break;
 		case '/support':
-
 			renderTemplate( 'support.njk', [ CRM ] );
+			break;
 
-		break;
 		case '/profile':
-
 			renderTemplate( 'profile.njk', [ CRM ] );
+			break;
 
-		break;
 		case '/src/app/header.css':
-
 			returnFile( 'text/css', './header.css' );
+			break;
 
-		break;
 		case '/src/component/header.js':
-
 			returnFile( 'application/javascript', '../component/header.js' );
+			break;
 
-		break;
 		default:
 			res.writeHead( 404 );
 			res.end();
