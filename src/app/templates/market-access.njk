@@ -1,0 +1,17 @@
+{% extends './layout.njk' %}
+
+{% from 'src/component/header.njk' import datahubHeader %}
+
+{% block body %}
+	{{ datahubHeader( user.permitted_applications, {
+		user: {
+			name: user.name
+		},
+		domains: {
+			datahub: '/'
+		},
+		active: 'market-access',
+		subNavigation: createSubnav( { ma: true } )
+	} ) }}
+{% endblock %}
+
