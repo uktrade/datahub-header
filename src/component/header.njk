@@ -122,7 +122,7 @@
 	</div>
 	<button role="button" class="datahub-header__menu-button js-datahub-header-toggle" aria-controls="navigation sub-navigation logo-navigation" aria-label="Show or hide navigation">Menu</button>
 	<div class="datahub-header__navigation-container">
-		<nav class="datahub-header__navigation-wrapper">
+		<nav class="datahub-header__navigation-wrapper" aria-labelledby="navigation">
 			<ul id="navigation" class="datahub-header__navigation {{ params.navigationClasses if params.navigationClasses }}" aria-label="Top Level Navigation">
 			{%- for item in apps %}
 
@@ -147,7 +147,7 @@
 			</ul>
 		</nav>
 		{%- if params.subNavigation %}
-			<nav class="datahub-header__navigation-wrapper datahub-header__navigation-wrapper--sub">
+			<nav class="datahub-header__navigation-wrapper datahub-header__navigation-wrapper--sub" aria-labelledby="sub-navigation">
 				<ul id="sub-navigation" class="datahub-header__navigation" aria-label="Second Level Navigation">
 				{%- for item in params.subNavigation %}
 					<li class="datahub-header__navigation__item">
