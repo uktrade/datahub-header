@@ -3,7 +3,8 @@ $govuk-grey-1: #6f777b;
 $govuk-grey-2: #bfc1c3;
 $govuk-grey-3: #dee0e2;
 $govuk-grey-4: #f8f8f8;
-$govuk-blue: #5694CA;
+$govuk-blue: #005EA5;
+$govuk-light-blue: #5694CA;
 $govuk-yellow: #ffbf47;
 
 $tablet: 40.0625em;
@@ -132,7 +133,7 @@ $tablet: 40.0625em;
 
 		&:link,
 		&:visited {
-			color: $govuk-blue;
+			color: $govuk-light-blue;
 		}
 	}
 
