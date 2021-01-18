@@ -19,7 +19,12 @@
 {%- set interactionsKey = 'datahub-interactions' %}
 {%- set investmentsKey = 'datahub-investments' %}
 {%- set ordersKey = 'datahub-orders' %}
-
+{%- set supportApp = {
+    activeKey: 'support',
+    name: 'Support',
+    href: ( datahubDomain + 'support' ),
+    active: ( 'datahub-support' === params.active )
+} %}
 {%- set apps = [
 	{
 		permittedKey: datahubCrmKey,
@@ -80,10 +85,6 @@
 
 {%- set headerLinks = [
 	{
-		text: 'Support',
-		href: ( datahubDomain + 'support' ),
-		active: ( 'datahub-support' === params.active )
-	}, {
 		text: params.user.name,
 		href: ( ( datahubDomain + 'profile' ) if( hasCrmPermission ) ),
 		active: ( 'datahub-profile' === params.active )
@@ -144,6 +145,11 @@
 					</li>
 				{%- endif %}
 			{%- endfor %}
+				<li class="datahub-header__navigation__item">
+					<a class="datahub-header__navigation__item__link{{ ' datahub-header__navigation__item__link--active' if supportApp.active }}" href="{{ supportApp.href }}">
+						{{- supportApp.name -}}
+					</a>
+				</li>
 			</ul>
 		</nav>
 		{%- if params.subNavigation %}
