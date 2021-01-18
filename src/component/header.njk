@@ -5,6 +5,7 @@
 {%- set miDomain = ( params.domains.mi or 'https://mi.exportwins.service.trade.gov.uk/' ) %}
 {%- set findExportersDomain = ( params.domains.findExporters or 'https://find-exporters.datahub.trade.gov.uk/' ) %}
 {%- set marketAcessDomain = ( params.domains.marketAccess or 'https://market-access.trade.gov.uk/' ) %}
+{%- set dataWorkspaceDomain = (params .domains.dataWorkspaceDomain or 'https://data.trade.gov.uk' ) %}
 
 {%- set datahubCrmKey = 'datahub-crm' %}
 {%- set hasCrmPermission = false %}
@@ -85,12 +86,8 @@
 
 {%- set headerLinks = [
 	{
-		text: params.user.name,
-		href: ( ( datahubDomain + 'profile' ) if( hasCrmPermission ) ),
-		active: ( 'datahub-profile' === params.active )
-	}, {
-		text: 'Sign out',
-		href: ( params.signout if params.signout else ( datahubDomain + 'oauth/sign-out' ) )
+		text: 'Switch to Data Workspace',
+		href: dataWorkspaceDomain
 	}
 ] -%}
 
