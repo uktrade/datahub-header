@@ -7,7 +7,6 @@ const nunjucks = require( 'nunjucks' );
 const PORT = ( process.env.PORT || 3000 );
 
 const CRM = 'datahub-crm';
-const MI = 'datahub-mi';
 const MARKET_ACCESS = 'market-access';
 const EXPORTERS = 'find-exporters';
 
@@ -51,10 +50,6 @@ const server = http.createServer( ( req, res ) => {
 					href: '/crm/',
 					active: !!opts.crm
 				},{
-					text: 'Only MI',
-					href: '/mi/',
-					active: !!opts.mi
-				},{
 					text: 'Only Exporters',
 					href: '/find-exporters/',
 					active: !!opts.exporters
@@ -88,15 +83,11 @@ const server = http.createServer( ( req, res ) => {
 	switch( pathname ){
 
 		case '/':
-			renderTemplate( 'all.njk', [ CRM, MI, MARKET_ACCESS, EXPORTERS ] );
+			renderTemplate( 'all.njk', [ CRM, MARKET_ACCESS, EXPORTERS ] );
 			break;
 
 		case '/crm/':
 			renderTemplate( 'crm.njk', [ CRM ], ( query.apps && query.apps.split( ',' ) ) );
-			break;
-
-		case '/mi/':
-			renderTemplate( 'mi.njk', [ MI ] );
 			break;
 
 		case '/find-exporters/':
@@ -112,11 +103,11 @@ const server = http.createServer( ( req, res ) => {
 			break;
 
 		case '/no-subnav/':
-			renderTemplate( 'no-subnav.njk', [ CRM, MI ] );
+			renderTemplate( 'no-subnav.njk', [ CRM ] );
 			break;
 
 		case '/fixed-width/':
-			renderTemplate( 'fixed-width.njk', [ CRM, MI ] );
+			renderTemplate( 'fixed-width.njk', [ CRM ] );
 			break;
 
 		case '/support':
