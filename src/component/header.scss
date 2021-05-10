@@ -6,6 +6,7 @@ $govuk-grey-4: #f8f8f8;
 $govuk-blue: #005EA5;
 $govuk-light-blue: #5694CA;
 $govuk-yellow: #ffbf47;
+$govuk-focus: #ffdd01;
 
 $tablet: 40.0625em;
 
@@ -42,20 +43,32 @@ $tablet: 40.0625em;
 	}
 }
 
-@mixin dh-focus() {
-	outline: 3px solid transparent;
-	&:focus {
-		transition: box-shadow 0.1s, outline-color 0.1s 0.1s;
-		box-shadow: 0 0 0 3px $govuk-yellow;
-		outline-offset: 0;
-		outline-color: $govuk-yellow;
+@mixin underline($color: inherit) {
+	position: relative;
+	&::after {
+		content: "";
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		border-bottom: 5px solid;
+		border-color: $color;
 	}
 }
 
-@mixin tablet-padding() {
-	@media ( min-width: $tablet ) {
-		padding-left: 30px;
-		padding-right: 30px;
+@mixin focus() {
+	outline: none;
+	// We are increasing specificity here because of color
+	&#{&}:focus {
+		color: $govuk-black;
+		background: $govuk-focus;
+	}
+}
+
+@mixin underline-focus() {
+	@include focus;
+	&:focus {
+		@include underline;
 	}
 }
 
@@ -76,7 +89,7 @@ $tablet: 40.0625em;
 		}
 
 		&__link {
-			@include dh-focus;
+			@include focus;
 		}
 
 		&__text {
@@ -132,7 +145,7 @@ $tablet: 40.0625em;
 		border: 0;
 		color: white;
 		background: 0 0;
-		@include dh-focus;
+		@include focus;
 
 		@media print {
 			font-family: sans-serif;
@@ -218,7 +231,7 @@ $tablet: 40.0625em;
 				display: inline-block;
 				padding: 5px 0;
 				width: 100%;
-				@include dh-focus;
+				@include focus;
 
 				// Is this ever used?
 				&--active {
@@ -283,12 +296,11 @@ $tablet: 40.0625em;
 				}
 
 				&:hover {
-					color: $govuk-blue;
-
+					@media ( max-width: $tablet ) {
+						color: $govuk-blue;
+					}
 					@media ( min-width: $tablet ) {
-						color: $govuk-black;
-						padding-bottom: 3px;
-						border-bottom: 5px solid $govuk-blue;
+						@include underline($govuk-blue);
 					}
 				}
 
@@ -296,8 +308,7 @@ $tablet: 40.0625em;
 					color: $govuk-blue;
 
 					@media ( min-width: $tablet ) {
-						padding-bottom: 3px;
-						border-bottom: 5px solid $govuk-blue;
+						@include underline;
 					}
 
 					&:visited,
@@ -306,7 +317,7 @@ $tablet: 40.0625em;
 					}
 				}
 
-				@include dh-focus;
+				@include underline-focus;
 			}
 		}
 	}
@@ -351,4 +362,3 @@ $tablet: 40.0625em;
 		}
 	}
  }
- 
