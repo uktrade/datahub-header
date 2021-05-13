@@ -78,6 +78,12 @@ $tablet: 40.0625em;
 	background-color: black;
 	position: relative; //contain button
 
+	// Prevent apps to add an outline to the header's links
+	a {
+		box-shadow: none !important;
+		outline: none !important;
+	}
+
 	&__logo {
 		font-size: 30px;
 		font-weight: bold;
