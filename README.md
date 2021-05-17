@@ -25,7 +25,6 @@ There are several options to control the items in the header.
 - __signout__ - Specify a different signout url
 - __domains__ - Override the default domains for each app in the macro.
 	- __datahub__ - The Data Hub CRM domain
-	- __mi__ - The MI domain
 	- __findExporters__ - The Find Exporters domain
 	- __marketAccess__ - The Market Access domain
 - __user__ - Specify some info about the user
@@ -54,3 +53,9 @@ To test the various headers in a browser there is a local Node.js server with mu
 If you want to add more test scenarios then it will be easier to have the files watched for changes and restart automatically. Simply run `npm run watch` to start the server in watch mode.
 
 The server is a basic `http.createServer` without any framework, so simply add a new template and update the `switch` statement with the new url path to match on. You will probably want to update the `createSubnav` function that is passed to the templates to add the new item, so you have a link to it.
+
+## Rolling out changes
+
+After a deployment, this package will need to be updated in the [DH frontend](https://github.com/uktrade/data-hub-frontend) and [Find Exporters](https://github.com/uktrade/data-science-frontend). The version used in the [legacy MI Dashboards site](https://github.com/uktrade/export-wins-ui-mi) should **not** be changed.
+
+Any changes to the header in Market Access projects have historically been carried out by their own developers, as they have a separate implementation of the global header. In order to facilitate these changes, notify their DM/PM outlining the changes (and if possible, provide a link to a live example of the latest header version).
