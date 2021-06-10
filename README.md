@@ -46,7 +46,7 @@ Similarly, the path to the JS file for inclusion in your bundler should be `node
 
 ## Testing
 
-To test the various headers in a browser there is a local Node.js server with multiple pages, first install the dependencies: ```npm install``` then run `npm start` to start it. You can control the port number by setting a `PORT` env variable.
+To test the various headers in a browser there is a local Node.js server with multiple pages, first install the dependencies: ```npm install```, generate the CSS files with ```npm run sass:dev```, then run `npm start` to start it. You can control the port number by setting a `PORT` env variable.
 
 ### Watching for changes
 
