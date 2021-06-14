@@ -1,6 +1,8 @@
 # Deployments
 
-All deployments of this package must be done manually with NPM. In order to do this you will need to be added to our `@uktrade` NPM organisation (if you don't have this access, ask SRE).
+All deployments of this package must be done manually via the NPM CLI.
+
+In order to do this you will need an NPM account (register [here](https://www.npmjs.com/signup) if you don't already have one). You will also need to join our `uktrade` org (SRE can grant access).
 
 ## Deployment steps
 
@@ -13,9 +15,10 @@ All deployments of this package must be done manually with NPM. In order to do t
 7. If you are happy with the above output, run ```npm publish```. The new version should now appear on the [NPM page](https://www.npmjs.com/package/@uktrade/datahub-header).
 8. Publish the new release to GitHub with the commands ```git push``` and ```git push --tags```.
 9. Create a GitHub release using your tag.
+10. Upgrade the header package in the [Data Hub frontend](https://github.com/uktrade/data-hub-frontend) and [Find Exporters](https://github.com/uktrade/data-science-frontend) (The version used in the [legacy MI Dashboards site](https://github.com/uktrade/export-wins-ui-mi) should **not** be changed). If the new version fixes a high or critical severity vulnerability (or some other type of urgent issue) then these two services will need to be deployed as well.
 
-## Rolling out changes
+## Market Access
 
-After a deployment, this package will need to be updated in the [DH frontend](https://github.com/uktrade/data-hub-frontend) and [Find Exporters](https://github.com/uktrade/data-science-frontend). The version used in the [legacy MI Dashboards site](https://github.com/uktrade/export-wins-ui-mi) should **not** be changed.
+Any changes to the header in Market Access projects have historically been carried out by their developers, as they have a separate implementation of the global header
 
-Any changes to the header in Market Access projects have historically been carried out by their own developers, as they have a separate implementation of the global header. In order to facilitate these changes, notify their DM/PM outlining the changes (and if possible, provide a link to a live example of the latest header version).
+In order to facilitate these changes, notify their DM/PM outlining the changes (and if possible, provide a link to a live example of the latest header version).
