@@ -54,8 +54,6 @@ If you want to add more test scenarios then it will be easier to have the files 
 
 The server is a basic `http.createServer` without any framework, so simply add a new template and update the `switch` statement with the new url path to match on. You will probably want to update the `createSubnav` function that is passed to the templates to add the new item, so you have a link to it.
 
-## Rolling out changes
+### Deployments
 
-After a deployment, this package will need to be updated in the [DH frontend](https://github.com/uktrade/data-hub-frontend) and [Find Exporters](https://github.com/uktrade/data-science-frontend). The version used in the [legacy MI Dashboards site](https://github.com/uktrade/export-wins-ui-mi) should **not** be changed.
-
-Any changes to the header in Market Access projects have historically been carried out by their own developers, as they have a separate implementation of the global header. In order to facilitate these changes, notify their DM/PM outlining the changes (and if possible, provide a link to a live example of the latest header version).
+The deployment documentation is available [here](./docs/Deployments.md)
