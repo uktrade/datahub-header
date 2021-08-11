@@ -1,6 +1,6 @@
 {
   "name": "@uktrade/datahub-header",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "The Data Hub header component",
   "main": "index.js",
   "files": [
