@@ -32,37 +32,37 @@
 		activeKey: companiesKey,
 		canShow: ( companiesKey in crmApps ) if crmApps else true,
 		name: 'Companies',
-		href: ( datahubDomain + 'companies' )
+		href: ( datahubDomain + 'companies?archived[0]=false&sortby=modified_on:desc&page=1' )
 	}, {
 		permittedKey: datahubCrmKey,
 		activeKey: contactsKey,
 		canShow: ( contactsKey in crmApps ) if crmApps else true,
 		name: 'Contacts',
-		href: ( datahubDomain + 'contacts' )
+		href: ( datahubDomain + 'contacts?archived[0]=false&sortby=modified_on:desc&page=1' )
 	}, {
 		permittedKey: datahubCrmKey,
 		activeKey: eventsKey,
 		canShow: ( eventsKey in crmApps ) if crmApps else true,
 		name: 'Events',
-		href: ( datahubDomain + 'events' )
+		href: ( datahubDomain + 'events?page=1&sortby=modified_on:desc' )
 	}, {
 		permittedKey: datahubCrmKey,
 		activeKey: interactionsKey,
 		canShow: ( interactionsKey in crmApps ) if crmApps else true,
 		name: 'Interactions',
-		href: ( datahubDomain + 'interactions' )
+		href: ( datahubDomain + 'interactions?sortby=date:desc&page=1' )
 	}, {
 		permittedKey: datahubCrmKey,
 		activeKey: investmentsKey,
 		canShow: ( investmentsKey in crmApps ) if crmApps else true,
 		name: 'Investments',
-		href: ( datahubDomain + 'investments' )
+		href: ( datahubDomain + 'investments?page=1&sortby=created_on:desc' )
 	}, {
 		permittedKey: datahubCrmKey,
 		activeKey: ordersKey,
 		canShow: ( ordersKey in crmApps ) if crmApps else true,
 		name: 'Orders',
-		href: ( datahubDomain + 'omis' )
+		href: ( datahubDomain + 'omis?page=1&sortby=created_on:desc' )
 	}, {
 		permittedKey: 'find-exporters',
 		activeKey: 'find-exporters',
